@@ -1,100 +1,41 @@
-# Telecom Customer Churn Prediction using Machine Learning
+# Telecom Customer Churn Prediction (ML)
 
 ## Overview
-Customer churn prediction is a critical task for telecom operators because acquiring new customers is significantly more expensive than retaining existing ones.  
-This project builds a machine learning pipeline to predict whether a customer will churn using the IBM Telco Customer Churn dataset.
 
-The project demonstrates a full ML workflow including:
-- Data preprocessing
-- Feature engineering
-- Model training
-- Hyperparameter tuning
-- Model evaluation
-- Error analysis
+This project predicts whether a telecom customer is likely to churn using supervised machine learning on the IBM Telco Customer Churn dataset.
 
-The goal is to identify customers at risk of leaving so that telecom providers can take preventive actions.
+The notebook covers:
 
----
+- data cleaning and preprocessing
+- feature encoding and scaling
+- model training and tuning
+- evaluation and error analysis
 
 ## Dataset
 
-**IBM Telco Customer Churn Dataset**
+- **Source:** IBM Telco Customer Churn (Kaggle)
+- **Rows:** 7043 customers
+- **Features:** 21 input variables
+- **Target:** `Churn` (`Yes` / `No`)
 
-- Samples: **7043 customers**
-- Features: **21 variables**
-- Target: **Churn (Yes / No)**
+## Methodology
 
-Feature types:
+### Preprocessing
 
-Numerical
-- SeniorCitizen
-- tenure
-- MonthlyCharges
-- TotalCharges
+- numerical imputation (median)
+- categorical imputation (most frequent)
+- one-hot encoding for categorical features
+- standard scaling for numeric features
 
-Categorical
-- gender
-- Partner
-- Dependents
-- PhoneService
-- MultipleLines
-- InternetService
-- OnlineSecurity
-- OnlineBackup
-- DeviceProtection
-- TechSupport
-- StreamingTV
-- StreamingMovies
-- Contract
-- PaperlessBilling
-- PaymentMethod
+### Models
 
-Source:  
-https://www.kaggle.com/blastchar/telco-customer-churn
+- Logistic Regression
+- XGBoost
 
----
+### Validation
 
-## Machine Learning Pipeline
-
-The preprocessing pipeline prevents data leakage using a **ColumnTransformer**.
-
-Steps:
-
-1. Missing value imputation  
-   - Median for numerical features  
-   - Mode for categorical features
-
-2. Encoding  
-   - One-hot encoding for categorical variables
-
-3. Feature scaling  
-   - StandardScaler for numerical features
-
----
-
-## Models
-
-Two supervised learning models were implemented.
-
-### Logistic Regression
-Baseline model with L1 regularization for feature selection.
-
-### XGBoost
-Gradient boosting trees capturing nonlinear feature interactions.
-
----
-
-## Evaluation
-
-Model evaluation uses **Stratified 5-fold cross validation**.
-
-Metrics:
-- Accuracy
-- Recall (important for churn detection)
-
-Recall is prioritized because failing to detect a future churner is more costly than a false alarm.
-
----
+- Stratified 5-fold cross-validation
+- Focused on **recall** (important for churn-risk detection)
 
 ## Results
 
@@ -105,50 +46,27 @@ Recall is prioritized because failing to detect a future churner is more costly 
 | XGBoost (baseline) | 76.0% | 71.3% |
 | XGBoost (tuned) | 75.3% | 80.3% |
 
-The tuned logistic regression achieved the **highest recall**, making it the best model for churn detection.
+The tuned Logistic Regression model achieved the highest recall and is the best fit when minimizing missed churners is the top priority.
 
----
+## Repository Structure
 
-## Error Analysis
+- `telecom-customer-churn-ml.ipynb` — full analysis and modeling notebook
+- `telecom-customer-churn-ml.pdf` — exported report/notebook
 
-The main failure cases occurred for customers with:
-- medium tenure
-- moderate monthly charges
-- yearly contracts
+## How to Run
 
-These customers present mixed patterns between churn and non-churn groups.
+1. Create and activate a Python environment.
+2. Install required packages listed in the notebook imports.
+3. Open and run `telecom-customer-churn-ml.ipynb` in Jupyter or VS Code.
 
----
+## Tech Stack
 
-## Key Insights
+- Python
+- pandas, numpy
+- scikit-learn
+- xgboost
+- matplotlib, seaborn
 
-Customers most likely to churn tend to have:
+## License
 
-- month-to-month contracts
-- higher monthly charges
-- short tenure
-
-Telecom companies can use these insights to:
-- encourage long-term contracts
-- provide targeted retention offers
-- monitor high-risk segments.
-
----
-
-## Technologies
-
-Python  
-Scikit-learn  
-XGBoost  
-Pandas  
-NumPy  
-Matplotlib  
-Seaborn  
-
----
-
-## Author
-
-Farouk Benkhelifa  
-Telecommunications Engineering Student  
-ENSTTIC – Oran
+MIT License (see `LICENSE`).
