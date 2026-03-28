@@ -1,72 +1,80 @@
 # Telecom Customer Churn Prediction (ML)
 
-## Overview
+![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?style=flat&logo=python&logoColor=white)
+![Notebook](https://img.shields.io/badge/notebook-Jupyter-F37626?style=flat&logo=jupyter&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Status](https://img.shields.io/badge/status-supporting%20portfolio-1f6feb)
 
-This project predicts whether a telecom customer is likely to churn using supervised machine learning on the IBM Telco Customer Churn dataset.
+## What is this
 
-The notebook covers:
+This repository predicts telecom customer churn using supervised machine learning on the IBM Telco dataset. It demonstrates a complete notebook workflow from preprocessing and feature engineering to model tuning and evaluation.
 
-- data cleaning and preprocessing
-- feature encoding and scaling
-- model training and tuning
-- evaluation and error analysis
+## Why it exists
+
+Churn prediction is a high-impact telecom use case where recall-focused modeling helps prioritize retention actions and reduce customer loss.
+
+## Approach
+
+1. Data cleaning and missing-value handling
+2. Feature encoding/scaling
+3. Baseline and tuned models (Logistic Regression, XGBoost)
+4. Stratified cross-validation and metric-driven comparison
 
 ## Dataset
 
-- **Source:** IBM Telco Customer Churn (Kaggle)
-- **Rows:** 7043 customers
-- **Features:** 21 input variables
-- **Target:** `Churn` (`Yes` / `No`)
+- Source: IBM Telco Customer Churn (Kaggle)
+- Rows: 7043
+- Features: 21
+- Target: `Churn` (`Yes`/`No`)
 
-## Methodology
+## Installation
 
-### Preprocessing
+```bash
+git clone https://github.com/fbenkhelifa/telecom-customer-churn-ml.git
+cd telecom-customer-churn-ml
+python -m venv .venv
+# Windows PowerShell
+.\.venv\Scripts\Activate.ps1
+pip install pandas numpy scikit-learn xgboost matplotlib seaborn jupyter
+```
 
-- numerical imputation (median)
-- categorical imputation (most frequent)
-- one-hot encoding for categorical features
-- standard scaling for numeric features
+## Usage
 
-### Models
+```bash
+jupyter notebook telecom-customer-churn-ml.ipynb
+```
 
-- Logistic Regression
-- XGBoost
+Run cells top-to-bottom.
 
-### Validation
+### Key observed results (from project report)
 
-- Stratified 5-fold cross-validation
-- Focused on **recall** (important for churn-risk detection)
+- Logistic Regression (tuned): **Recall 86.8%**
+- XGBoost (tuned): **Recall 80.3%**
 
-## Results
+## Project structure
 
-| Model | Accuracy | Recall |
-|------|------|------|
-| Logistic Regression (baseline) | 80.5% | 55.3% |
-| Logistic Regression (tuned) | 69.2% | **86.8%** |
-| XGBoost (baseline) | 76.0% | 71.3% |
-| XGBoost (tuned) | 75.3% | 80.3% |
+```text
+telecom-customer-churn-ml/
+├── telecom-customer-churn-ml.ipynb  # Full notebook workflow
+├── telecom-customer-churn-ml.pdf    # Exported report/notebook
+├── README.md
+├── .gitignore
+└── LICENSE
+```
 
-The tuned Logistic Regression model achieved the highest recall and is the best fit when minimizing missed churners is the top priority.
+## Limitations
 
-## Repository Structure
+- Notebook-first format (limited modularization/reusability)
+- No packaged training/inference CLI
+- No automated tests or CI pipeline
 
-- `telecom-customer-churn-ml.ipynb` — full analysis and modeling notebook
-- `telecom-customer-churn-ml.pdf` — exported report/notebook
+## Roadmap
 
-## How to Run
-
-1. Create and activate a Python environment.
-2. Install required packages listed in the notebook imports.
-3. Open and run `telecom-customer-churn-ml.ipynb` in Jupyter or VS Code.
-
-## Tech Stack
-
-- Python
-- pandas, numpy
-- scikit-learn
-- xgboost
-- matplotlib, seaborn
+1. Refactor into modular Python package (`src/`, `notebooks/`, `data/`).
+2. Add reproducible `requirements.txt` + environment lock.
+3. Add threshold tuning and cost-sensitive evaluation.
+4. Add baseline model serving API for churn scoring.
 
 ## License
 
-MIT License (see `LICENSE`).
+Licensed under MIT. See [`LICENSE`](./LICENSE).
