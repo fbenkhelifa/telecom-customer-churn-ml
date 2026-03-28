@@ -7,25 +7,17 @@
 
 ## What is this
 
-This repository predicts telecom customer churn using supervised machine learning on the IBM Telco dataset. It demonstrates a complete notebook workflow from preprocessing and feature engineering to model tuning and evaluation.
+This repository predicts telecom customer churn using supervised machine learning on the IBM Telco dataset.
 
 ## Why it exists
 
 Churn prediction is a high-impact telecom use case where recall-focused modeling helps prioritize retention actions and reduce customer loss.
 
-## Approach
+## Architecture / Stack
 
-1. Data cleaning and missing-value handling
-2. Feature encoding/scaling
-3. Baseline and tuned models (Logistic Regression, XGBoost)
-4. Stratified cross-validation and metric-driven comparison
-
-## Dataset
-
-- Source: IBM Telco Customer Churn (Kaggle)
-- Rows: 7043
-- Features: 21
-- Target: `Churn` (`Yes`/`No`)
+- Python, pandas, numpy
+- scikit-learn, XGBoost
+- Jupyter Notebook workflow
 
 ## Installation
 
@@ -46,7 +38,14 @@ jupyter notebook telecom-customer-churn-ml.ipynb
 
 Run cells top-to-bottom.
 
-### Key observed results (from project report)
+### Dataset
+
+- Source: IBM Telco Customer Churn (Kaggle)
+- Rows: 7043
+- Features: 21
+- Target: `Churn` (`Yes`/`No`)
+
+### Key observed results
 
 - Logistic Regression (tuned): **Recall 86.8%**
 - XGBoost (tuned): **Recall 80.3%**
@@ -55,8 +54,8 @@ Run cells top-to-bottom.
 
 ```text
 telecom-customer-churn-ml/
-├── telecom-customer-churn-ml.ipynb  # Full notebook workflow
-├── telecom-customer-churn-ml.pdf    # Exported report/notebook
+├── telecom-customer-churn-ml.ipynb
+├── telecom-customer-churn-ml.pdf
 ├── README.md
 ├── .gitignore
 └── LICENSE
@@ -71,8 +70,8 @@ telecom-customer-churn-ml/
 ## Roadmap
 
 1. Refactor into modular Python package (`src/`, `notebooks/`, `data/`).
-2. Add reproducible `requirements.txt` + environment lock.
-3. Add threshold tuning and cost-sensitive evaluation.
+2. Add reproducible dependency lock file.
+3. Add threshold optimization and cost-sensitive evaluation.
 4. Add baseline model serving API for churn scoring.
 
 ## License
