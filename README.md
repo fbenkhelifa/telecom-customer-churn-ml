@@ -35,7 +35,7 @@ powershell -ExecutionPolicy Bypass -File scripts/download_data.ps1
 ## Usage
 
 ```bash
-jupyter notebook telecom-customer-churn-ml.ipynb
+jupyter notebook notebooks/churn-prediction.ipynb
 ```
 
 Run cells top-to-bottom.
@@ -46,7 +46,7 @@ Run cells top-to-bottom.
 - Rows: 7043
 - Features: 21
 - Target: `Churn` (`Yes`/`No`)
-- Local path used by notebook: `data/raw/telco/WA_Fn-UseC_-Telco-Customer-Churn.csv`
+- Local path used by notebook: `../data/raw/telco/WA_Fn-UseC_-Telco-Customer-Churn.csv`
 
 ### Key observed results
 
@@ -63,10 +63,14 @@ telecom-customer-churn-ml/
 │   │   └── telco/
 │   │       └── WA_Fn-UseC_-Telco-Customer-Churn.csv
 │   └── processed/
+├── notebooks/
+│   └── churn-prediction.ipynb
+├── reports/
+│   └── telecom-customer-churn-ml.pdf
+├── src/
+│   └── .gitkeep
 ├── scripts/
 │   └── download_data.ps1
-├── telecom-customer-churn-ml.ipynb
-├── telecom-customer-churn-ml.pdf
 ├── README.md
 ├── .gitignore
 └── LICENSE
