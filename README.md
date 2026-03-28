@@ -28,6 +28,8 @@ python -m venv .venv
 # Windows PowerShell
 .\.venv\Scripts\Activate.ps1
 pip install pandas numpy scikit-learn xgboost matplotlib seaborn jupyter
+# bootstrap dataset into data/raw/telco/
+powershell -ExecutionPolicy Bypass -File scripts/download_data.ps1
 ```
 
 ## Usage
@@ -40,10 +42,11 @@ Run cells top-to-bottom.
 
 ### Dataset
 
-- Source: IBM Telco Customer Churn (Kaggle)
+- Source: IBM Telco Customer Churn
 - Rows: 7043
 - Features: 21
 - Target: `Churn` (`Yes`/`No`)
+- Local path used by notebook: `data/raw/telco/WA_Fn-UseC_-Telco-Customer-Churn.csv`
 
 ### Key observed results
 
@@ -54,6 +57,14 @@ Run cells top-to-bottom.
 
 ```text
 telecom-customer-churn-ml/
+├── data/
+│   ├── README.md
+│   ├── raw/
+│   │   └── telco/
+│   │       └── WA_Fn-UseC_-Telco-Customer-Churn.csv
+│   └── processed/
+├── scripts/
+│   └── download_data.ps1
 ├── telecom-customer-churn-ml.ipynb
 ├── telecom-customer-churn-ml.pdf
 ├── README.md
